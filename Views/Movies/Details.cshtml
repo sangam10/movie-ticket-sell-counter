@@ -6,10 +6,10 @@
 
 <div class="row">
     <div class="col-md-8 offset-2">
-        <div class="card mb-12">
+        <div class="card mb-12" style="border: 2px solid #DC143C;">
             <div class="row g-0">
                 <div class="col-md-12">
-                    <div class="card-header text-white bg-info">
+                    <div class="card-header text-white" style="background-color: #DC143C;">
                         <p class="card-text">
                             <h5 class="card-title">
                                 @Model.Name
@@ -53,24 +53,25 @@
                                 <span class="badge bg-primary text-white">UPCOMING</span>
                             }
                         </p>
-                        <p class="card-text">
-                            <b>Actors: </b>
-                            <hr />
-                            <div class="row">
-                                @foreach (var actor in Model.Actors_Movies)
-                                {
-                                    <div class="column text-center">
-                                        <img class="border-info rounded-circle" src="@actor.Actor.ProfilePictureURL" style="max-width: 150px" />
-                                        <br />
-                                        <a asp-controller="Actors" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.FullName</a>
-                                    </div>
-                                }
-                            </div>
-                        </p>
-
                     </div>
                 </div>
+                <hr>
                 <div class="col-md-12">
+
+                    <div class="card-header">
+                        Actors
+                    </div>
+                    <div class="row py-2">
+                            @foreach (var actor in Model.Actors_Movies)
+                            {
+                                <div class="col-md-2 text-center">
+                                    <img class="border-info rounded-circle" src="@actor.Actor.ProfilePictureURL" style="max-width: 150px" />
+                                    <br />
+                                    <a asp-controller="Actors" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.FullName</a>
+                                </div>
+                            }
+                    </div>
+
                     <div class="card-footer">
                         <p class="card-text">
                             <a class="btn btn-outline-primary float-right" asp-action="Index">
